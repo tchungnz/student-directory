@@ -21,10 +21,9 @@ end
 def print_students(students)
 
 puts "Please enter the starting letter of students you want to print:"
-letter = gets.chomp.capitalize
 
 students.each.with_index(1) do |student, index|
-    if student[:name][0] == letter
+    if student[:name].length <= 13
         puts "#{index} #{student[:name]} (#{student[:cohort]} cohort)"
     end
 end
