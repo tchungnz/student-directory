@@ -18,15 +18,20 @@ end
 students
 end
 
-
 def print_students(students)
+
+puts "Please enter the starting letter of students you want to print:"
+letter = gets.chomp.capitalize
+
 students.each.with_index(1) do |student, index|
-    puts "#{index} #{student[:name]} (#{student[:cohort]} cohort)"
+    if student[:name][0] == letter
+        puts "#{index} #{student[:name]} (#{student[:cohort]} cohort)"
+    end
 end
 end
 
 def print_footer(students)
-print "Overall, we have #{students.count} great students"
+puts "Overall, we have #{students.count} great students"
 end
 
 students = students_input
