@@ -15,6 +15,7 @@ while !name.empty? do
     puts "Now we have #{students.count} students"
     name = gets.chomp
 end
+
 students
 end
 
@@ -22,10 +23,10 @@ def print_students(students)
 
 puts "Please enter the starting letter of students you want to print:"
 
-students.each.with_index(1) do |student, index|
-    if student[:name].length <= 13
-        puts "#{index} #{student[:name]} (#{student[:cohort]} cohort)"
-    end
+x = 0
+while x < (students.size)
+    puts "#{students[x][:name]} (#{students[x][:cohort]} cohort)"
+    x += 1
 end
 end
 
