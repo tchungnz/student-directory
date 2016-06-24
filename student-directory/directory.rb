@@ -22,10 +22,13 @@ end
 def print_students(students)
 
 puts "Please enter the starting letter of students you want to print:"
+letter = gets.chomp
 
 x = 0
 while x < (students.size)
-    puts "#{students[x][:name]} (#{students[x][:cohort]} cohort)"
+    if students[x][:name][0] == letter
+        puts "#{students[x][:name]} (#{students[x][:cohort]} cohort)"
+    end
     x += 1
 end
 end
