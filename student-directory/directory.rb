@@ -22,7 +22,10 @@ name_input
 cohort_input
     while !@name.empty? do
         students << {name: @name, cohort: @cohort.to_sym}
-        puts "Now we have #{students.count} students"
+        if students.length == 1
+            puts "Now we have #{students.count} student"
+        else puts "Now we have #{students.count} students"
+        end
         name_input
         cohort_input
     end
