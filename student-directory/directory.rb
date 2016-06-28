@@ -5,7 +5,7 @@ end
 
 def name_input
     puts "Please enter the name of the student:"
-    @name = gets.chomp
+    @name = gets.delete "\n"
 end
 
 def cohort_input
