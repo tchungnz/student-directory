@@ -3,51 +3,63 @@ puts "The students of Villains Academy"
 puts "-------------"
 end
 
-def students_input
-students = []
-puts "Please enter the names of students:"
-puts "To finish please hit return twice"
-name = gets.chomp
-puts "Please enter the cohort:"
-cohort = gets.chomp.to_sym
-    if cohort == ""
-        cohort = "November"
-    end
+def name_input
+    puts "Please enter the name of the student:"
+    @name = gets.chomp
+end
 
-while !name.empty? do
-    students << {name: name, cohort: cohort, country: :TBC, age: :TBC, height: :TBC}
-    puts "Now we have #{students.count} students"
-    puts "Please enter the names of students:"
-    puts "To finish please hit return twice"
-    name = gets.chomp
-    puts "Please enter the cohort:"
-    cohort = gets.chomp
-    if cohort == ""
-        cohort = "November"
+def cohort_input
+    puts "Please enter the cohort of the student:"
+    @cohort = gets.chomp
+    if @cohort == ""
+        @cohort = "November"
     end
 end
-students
+
+def students_input
+students = []
+name_input
+cohort_input
+    while !@name.empty? do
+        students << {name: @name, cohort: @cohort.to_sym}
+        puts "Now we have #{students.count} students"
+        name_input
+        cohort_input
+    end
+   students
+end
+
+def cohort(students)
+    @cohort_list = []
+    students.each do |student|
+        if !@cohort_list.include? student[:cohort]
+            @cohort_list << student[:cohort]
+        end
+    end
+    puts @cohort_list
 end
 
 def print_students(students)
-
-puts "Please enter the starting letter of students you want to print:"
-letter = gets.chomp
-
-x = 0
-while x < (students.size)
-    if students[x][:name][0] == letter
-        puts "#{students[x][:name]} (#{students[x][:cohort]} cohort)".center(100)
+    @cohort_list.each do |month|
+        puts "Cohort #{month}:"
+        students.each do |student|
+            if student[:cohort] == month
+                puts "#{student[:name]}"
+            end
+        end
     end
-x += 1
-end
 end
 
 def print_footer(students)
-puts "Overall, we have #{students.count} great students"
+    if students.size == 1
+    puts "Overall, we have #{students.count} great student"
+    else
+        puts "Overall, we have #{students.count} great students"
+    end
 end
 
 students = students_input
 print_header
+cohort(students)
 print_students(students)
 print_footer(students)
